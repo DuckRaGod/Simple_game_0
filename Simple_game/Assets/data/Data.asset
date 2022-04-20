@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da9e618ea198bf4fbf9ea3bcb157ee2, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  score: 72
-  life: -2
+  highest_score: 0
+  score: 0
+  life: 3
   is_play: 1
   target_bank:
     target_level:
@@ -27,3 +28,13 @@ MonoBehaviour:
       target_prefab:
       - {fileID: 1094915355886170445, guid: 85341f8d427d56a4a8d17704616a24bc, type: 3}
       - {fileID: 1094915355886170445, guid: 04622033ccb5e3841973ef116ad87cf5, type: 3}
+    - xp_needed: 10
+      target_prefab:
+      - {fileID: 1094915355886170445, guid: d837b39f3129609409a1f454a3e6a17b, type: 3}
+    - xp_needed: 1
+      target_prefab:
+      - {fileID: 1094915355886170445, guid: 989b2228ba4edbe418cbbe4427b39a55, type: 3}
+    - xp_needed: 1
+      target_prefab:
+      - {fileID: 1094915355886170445, guid: 1acb028b96c851d418b2ce915a8b827d, type: 3}
+      - {fileID: 1094915355886170445, guid: 9e2baf078bc0095469b82c3cebec364c, type: 3}

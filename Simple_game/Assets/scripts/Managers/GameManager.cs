@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour{
     //  After reaching max level will boost speed of targets!
     float max_level_speed_boost = 0;
 
+    Transform target_transform;
+
     public Data data;
     public UiManager ui_manager;
 
@@ -25,6 +27,13 @@ public class GameManager : MonoBehaviour{
     public GameObject main_canves;   
     //  Death ui with retry score and highscore!
     public GameObject death_canves;  
+    
+    //  Effect prefabs!
+    public GameObject[] effect_prefab;
+    int effect_arr_length;
+    //  Time to spawn effect!
+    public float timer_effect;
+    float time_effect;
 
     int amount_of_levels;
     
@@ -38,6 +47,7 @@ public class GameManager : MonoBehaviour{
         data.highest_score = 0;
 
         amount_of_levels = data.target_bank.target_level.Length;
+        effect_arr_length = effect_prefab.Length;
 
         if (Instance != null && Instance != this) { 
             Destroy(this); 
@@ -52,13 +62,44 @@ public class GameManager : MonoBehaviour{
         data.is_play = true;
     }
 
+    void SpawnEffect(){
+        for (int i = 0; i < effect_arr_length; i++){
+            if(effect_prefab[i].activeSelf == true) return;
+        }
+        if(Random.Range(0f,1f) < 0.5f) return;
+
+        var j = Random.Range(0,effect_arr_length);
+        var effect = effect_prefab[j];
+        effect.transform.position = new Vector2(Random.Range(-x,x),Random.Range(n_y,p_y));
+        if(j == 0){
+            var pos = target_transform.position - effect.transform.position;
+
+            var _angle = Mathf.Atan2(pos.y, pos.x) * Mathf.Rad2Deg;
+            effect.transform.rotation = Quaternion.Euler(new Vector3(0, 0, _angle));
+        }
+        effect.SetActive(true);
+    }
+
+    public void ReSpawn(GameObject game_object){
+        print("A");
+        game_object.transform.position  = new Vector2(Random.Range(-x,x),Random.Range(n_y,p_y));
+    }
+
     void Update(){
         //  Todo change to exit to menu ui with shop maybe?
         //  Quit game!
         if(Input.GetKeyDown("escape")){
             Application.Quit();
         }
-        if(data.is_play) return;
+
+        if(data.is_play){
+            time_effect += Time.deltaTime;
+            if(time_effect >= timer_effect){
+                SpawnEffect();
+                time_effect = 0;
+            }
+            return;
+        }
         if(Input.anyKeyDown){
             ui_canves.SetActive(true);
             main_canves.SetActive(false);
@@ -76,6 +117,7 @@ public class GameManager : MonoBehaviour{
         var rot = Quaternion.Euler(0,0,Random.Range(0,360f));
         var pos = new Vector2(Random.Range(-x,x),Random.Range(n_y,p_y));
         var obj = Instantiate(target,pos,rot);
+        target_transform = obj.transform;
         obj.GetComponent<Target>().speed += max_level_speed_boost;
     }
 

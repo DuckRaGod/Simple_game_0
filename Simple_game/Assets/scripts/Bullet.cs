@@ -44,8 +44,8 @@ public class Bullet : MonoBehaviour{
         Is_active = set;
     }
 
-    public void Change_diraction(Quaternion rotation){
-        transform.localRotation = rotation;
+    public void Change_diraction(Quaternion rotation , Vector3 position){
+        transform.SetPositionAndRotation(position,rotation);
         rigidbody2d.velocity = transform.right * speed;
     }
 

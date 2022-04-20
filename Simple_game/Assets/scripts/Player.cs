@@ -77,7 +77,7 @@ public class Player : MonoBehaviour{
         if(!GameManager.Instance.data.is_play) return;
         
         Rotate();
-        if(Input.GetMouseButtonDown(0) && Input.GetKeyDown("space")){
+        if(Input.GetMouseButtonDown(0) || Input.GetKeyDown("space")){
             Shoot();
         }
     }

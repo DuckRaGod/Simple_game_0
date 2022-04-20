@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8116825101370829676}
   m_Layer: 0
   m_Name: Target 1
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,9 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  block_amount: 0
   switch_diraction_time: 0
-  point: 1
 --- !u!1001 &201552233561058562
 PrefabInstance:
   m_ObjectHideFlags: 0
