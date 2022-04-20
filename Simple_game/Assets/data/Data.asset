@@ -12,6 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da9e618ea198bf4fbf9ea3bcb157ee2, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  score: 0
-  life: 3
+  score: 72
+  life: -2
   is_play: 1
+  target_bank:
+    target_level:
+    - xp_needed: 0
+      target_prefab:
+      - {fileID: 1094915355886170445, guid: 7feabec7d81d2584faafde1b8d471b75, type: 3}
+    - xp_needed: 1
+      target_prefab:
+      - {fileID: 1094915355886170445, guid: 2e8b637fafc8020448ce8d183351c886, type: 3}
+    - xp_needed: 10
+      target_prefab:
+      - {fileID: 1094915355886170445, guid: 85341f8d427d56a4a8d17704616a24bc, type: 3}
+      - {fileID: 1094915355886170445, guid: 04622033ccb5e3841973ef116ad87cf5, type: 3}
