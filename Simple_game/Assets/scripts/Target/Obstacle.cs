@@ -5,7 +5,6 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour,IHitable{
     public void Hit(Bullet bullet){
         bullet.Set_active(false);
-        GameManager.Instance.Hit_obstacle();
-        Destroy(transform.parent.gameObject);
+        GameManager.Instance.Hit_obstacle(transform.parent.gameObject);
     }
 }

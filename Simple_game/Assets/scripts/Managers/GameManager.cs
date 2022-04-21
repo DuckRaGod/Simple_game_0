@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour{
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour{
     //  After reaching max level will boost speed of targets!
     float max_level_speed_boost = 0;
 
-    Transform target_transform;
+    readonly List<GameObject> targets = new();
 
     public Data data;
     public UiManager ui_manager;
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour{
         var effect = effect_prefab[j];
         effect.transform.position = new Vector2(Random.Range(-x,x),Random.Range(n_y,p_y));
         if(j == 0){
-            var pos = target_transform.position - effect.transform.position;
+            var pos = targets[0].transform.position - effect.transform.position;
 
             var _angle = Mathf.Atan2(pos.y, pos.x) * Mathf.Rad2Deg;
             effect.transform.rotation = Quaternion.Euler(new Vector3(0, 0, _angle));
@@ -104,7 +105,8 @@ public class GameManager : MonoBehaviour{
             ui_canves.SetActive(true);
             main_canves.SetActive(false);
             death_canves.SetActive(false);
-            Instantiate(data.target_bank.target_level[0].target_prefab[0] , Vector3.zero , Quaternion.identity);//Create Target at start of the game!
+            var obj = Instantiate(data.target_bank.target_level[0].target_prefab[0] , Vector3.zero , Quaternion.identity);//Create Target at start of the game!
+            targets.Add(obj);
             StartCoroutine(Set_play());   
             ui_manager.Update_ui();
         }
@@ -112,16 +114,20 @@ public class GameManager : MonoBehaviour{
 
     //  Spawn target randomly at box bounds!
     public void Place_target(){
+        if(targets.Count > 0) return;
         var number = Random.Range(0,data.target_bank.target_level[level].target_prefab.Length);
         var target = data.target_bank.target_level[level].target_prefab[number];
         var rot = Quaternion.Euler(0,0,Random.Range(0,360f));
         var pos = new Vector2(Random.Range(-x,x),Random.Range(n_y,p_y));
         var obj = Instantiate(target,pos,rot);
-        target_transform = obj.transform;
+        targets.Add(obj);
         obj.GetComponent<Target>().speed += max_level_speed_boost;
     }
 
-    public void Hit_target(){
+    public void Hit_target(GameObject game_object){
+        if(targets.Count <= 0) return;
+        targets.Remove(game_object);
+        Destroy(game_object);
         xp++;
         data.score ++;
         ui_manager.Update_ui();
@@ -136,11 +142,15 @@ public class GameManager : MonoBehaviour{
         }else{ 
             max_level_speed_boost += Random.Range(.25f,.5f);
         }
-
         Place_target();
     }
 
-    public void Hit_obstacle(){
+    public void Hit_obstacle(GameObject game_object){
+        //  Check if there any targets if not then dont!
+        //  This one and not hit target becouse if hit target and obstecle calculate only target hit!
+        if(targets.Count <= 0) return;
+        targets.Remove(game_object);
+        Destroy(game_object);
         data.life--;
         ui_manager.Update_ui();
         if(data.life <= 0){

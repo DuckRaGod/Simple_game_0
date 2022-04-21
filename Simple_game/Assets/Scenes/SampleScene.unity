@@ -1546,26 +1546,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1887775818}
     m_Modifications:
-    - target: {fileID: 1895498388, guid: bdf96a9c9d796284b8ad46d84ae1a1cf, type: 3}
-      propertyPath: m_Mass
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1895498388, guid: bdf96a9c9d796284b8ad46d84ae1a1cf, type: 3}
-      propertyPath: m_LinearDrag
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1895498388, guid: bdf96a9c9d796284b8ad46d84ae1a1cf, type: 3}
-      propertyPath: m_AngularDrag
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1895498388, guid: bdf96a9c9d796284b8ad46d84ae1a1cf, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 21917992619096475, guid: bdf96a9c9d796284b8ad46d84ae1a1cf, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3233681497897696474, guid: bdf96a9c9d796284b8ad46d84ae1a1cf, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1801,22 +1781,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1887775818}
     m_Modifications:
-    - target: {fileID: 1000585991, guid: 916197f95603a5c48b57cd945a94a4bb, type: 3}
-      propertyPath: m_Mass
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000585991, guid: 916197f95603a5c48b57cd945a94a4bb, type: 3}
-      propertyPath: m_LinearDrag
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000585991, guid: 916197f95603a5c48b57cd945a94a4bb, type: 3}
-      propertyPath: m_AngularDrag
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000585991, guid: 916197f95603a5c48b57cd945a94a4bb, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 150693347374319105, guid: 916197f95603a5c48b57cd945a94a4bb, type: 3}
       propertyPath: m_Name
       value: Change diraction 1
@@ -1865,10 +1829,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3737494623654166845, guid: 916197f95603a5c48b57cd945a94a4bb, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 916197f95603a5c48b57cd945a94a4bb, type: 3}
 --- !u!1 &2079675883
@@ -1912,7 +1872,7 @@ MonoBehaviour:
   effect_prefab:
   - {fileID: 1000585986}
   - {fileID: 1895498383}
-  timer_effect: 1
+  timer_effect: 30
 --- !u!4 &2079675885
 Transform:
   m_ObjectHideFlags: 0
