@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour{
     public int x;
     public int p_y; 
     public int n_y;
+    public float effect_spawn_pos_y;
 
     //  Game data for target!
     //  How many targets hit seccsfuly!
@@ -71,7 +72,7 @@ public class GameManager : MonoBehaviour{
 
         var j = Random.Range(0,effect_arr_length);
         var effect = effect_prefab[j];
-        effect.transform.position = new Vector2(Random.Range(-x,x),Random.Range(n_y,p_y));
+        effect.transform.position = new Vector2(Random.Range(-x,x),effect_spawn_pos_y);
         if(j == 0){
             var pos = targets[0].transform.position - effect.transform.position;
 

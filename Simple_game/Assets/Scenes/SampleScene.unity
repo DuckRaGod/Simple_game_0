@@ -1594,7 +1594,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Add life (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1895498388, guid: bdf96a9c9d796284b8ad46d84ae1a1cf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bdf96a9c9d796284b8ad46d84ae1a1cf, type: 3}
 --- !u!1 &1542442592
 GameObject:
@@ -1785,6 +1786,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Change diraction 1
       objectReference: {fileID: 0}
+    - target: {fileID: 150693347374319105, guid: 916197f95603a5c48b57cd945a94a4bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2266359487376327804, guid: 916197f95603a5c48b57cd945a94a4bb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1829,7 +1834,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1000585991, guid: 916197f95603a5c48b57cd945a94a4bb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 916197f95603a5c48b57cd945a94a4bb, type: 3}
 --- !u!1 &2079675883
 GameObject:
@@ -1864,6 +1870,7 @@ MonoBehaviour:
   x: 4
   p_y: 4
   n_y: -1
+  effect_spawn_pos_y: -2
   data: {fileID: 11400000, guid: 6cdb8486b1af33d4490a818acb2bc798, type: 2}
   ui_manager: {fileID: 2079675886}
   ui_canves: {fileID: 694292647}
@@ -1872,7 +1879,7 @@ MonoBehaviour:
   effect_prefab:
   - {fileID: 1000585986}
   - {fileID: 1895498383}
-  timer_effect: 30
+  timer_effect: 1
 --- !u!4 &2079675885
 Transform:
   m_ObjectHideFlags: 0
