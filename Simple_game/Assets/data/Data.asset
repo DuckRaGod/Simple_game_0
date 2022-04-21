@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da9e618ea198bf4fbf9ea3bcb157ee2, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  highest_score: 0
-  score: 0
+  highest_score: 2
+  score: 4
   life: 3
   is_play: 1
   target_bank:

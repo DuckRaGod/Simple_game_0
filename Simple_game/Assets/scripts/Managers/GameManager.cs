@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour{
 
     //  Bounds of box to spawn targets!
-    public int x;
-    public int p_y; 
+    public float x;
+    public float p_y; 
     public int n_y;
     public float effect_spawn_pos_y;
 
@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour{
     public GameObject main_canves;   
     //  Death ui with retry score and highscore!
     public GameObject death_canves;  
+    public GameObject player;
     
     //  Effect prefabs!
     public GameObject[] effect_prefab;
@@ -102,9 +103,11 @@ public class GameManager : MonoBehaviour{
             }
             return;
         }
-        if(Input.anyKeyDown){
+                
+        if(Input.anyKeyDown || Input.touches[0].fingerId  == 0){
             ui_canves.SetActive(true);
             main_canves.SetActive(false);
+            player.SetActive(true);
             death_canves.SetActive(false);
             var obj = Instantiate(data.target_bank.target_level[0].target_prefab[0] , Vector3.zero , Quaternion.identity);//Create Target at start of the game!
             targets.Add(obj);
@@ -163,6 +166,7 @@ public class GameManager : MonoBehaviour{
 
     void Death(){
         data.life = 3;
+        player.SetActive(false);
         //  Check if score is higher then highestscore that stored if yes then replace highestscore with score!
         if(data.score > data.highest_score){
             data.highest_score = data.score;

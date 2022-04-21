@@ -10,8 +10,8 @@ public class UiManager : MonoBehaviour{
     public Data data;
     
     public void Update_ui(){
-        Lives_text.text = $"Lives: {data.life}";
-        Score_text.text = $"Score: {data.score}";
+        Lives_text.text = data.life.ToString();
+        Score_text.text = data.score.ToString();
     }
 
     public void Update_ui_death(){
@@ -19,3 +19,4 @@ public class UiManager : MonoBehaviour{
         Highest_score_text.text = "Highest score: " + data.highest_score.ToString();
     }
 }
+    
