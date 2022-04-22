@@ -5,6 +5,7 @@ using UnityEngine;
 public class TargetHit : MonoBehaviour,IHitable{
     public void Hit(Bullet bullet){
         bullet.Set_active(false);
-        GameManager.Instance.Hit_target(transform.parent.gameObject);
+        JuiceManager.Instance.HitTarget(transform);
+        GameManager.Instance.Hit_target(transform.parent.parent.gameObject);
     }
 }

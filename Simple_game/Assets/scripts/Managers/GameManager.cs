@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour{
     void Awake(){
         //  Set game data!
         data.is_play = false;
+        data.isPause = false;
         data.life = 3;
         data.score = 0;
         data.highest_score = 0;
@@ -96,6 +97,7 @@ public class GameManager : MonoBehaviour{
         }
 
         if(data.is_play){
+            if(timer_effect <= 0) return;
             time_effect += Time.deltaTime;
             if(time_effect >= timer_effect){
                 SpawnEffect();
@@ -103,8 +105,13 @@ public class GameManager : MonoBehaviour{
             }
             return;
         }
-                
-        if(Input.anyKeyDown || Input.touches[0].fingerId  == 0){
+        if(data.isPause){
+            if(!data.is_play) data.isPause = false;
+            return;
+        }
+
+        if(Input.anyKeyDown){
+            JuiceManager.Instance.Enter();
             ui_canves.SetActive(true);
             main_canves.SetActive(false);
             player.SetActive(true);
@@ -125,7 +132,7 @@ public class GameManager : MonoBehaviour{
         var pos = new Vector2(Random.Range(-x,x),Random.Range(n_y,p_y));
         var obj = Instantiate(target,pos,rot);
         targets.Add(obj);
-        obj.GetComponent<Target>().speed += max_level_speed_boost;
+        obj.transform.GetChild(0).GetComponent<Target>().speed += max_level_speed_boost;
     }
 
     public void Hit_target(GameObject game_object){
@@ -150,8 +157,6 @@ public class GameManager : MonoBehaviour{
     }
 
     public void Hit_obstacle(GameObject game_object){
-        //  Check if there any targets if not then dont!
-        //  This one and not hit target becouse if hit target and obstecle calculate only target hit!
         if(targets.Count <= 0) return;
         targets.Remove(game_object);
         Destroy(game_object);
@@ -165,6 +170,7 @@ public class GameManager : MonoBehaviour{
     }
 
     void Death(){
+        JuiceManager.Instance.PlayerDie();
         data.life = 3;
         player.SetActive(false);
         //  Check if score is higher then highestscore that stored if yes then replace highestscore with score!

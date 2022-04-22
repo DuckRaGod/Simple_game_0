@@ -20,5 +20,6 @@ public class AddLife : MonoBehaviour,IHitable{
         data.life ++;
         GameManager.Instance.ui_manager.Update_ui();
         gameObject.SetActive(false);
+        JuiceManager.Instance.HitPowerup();
     }
 }

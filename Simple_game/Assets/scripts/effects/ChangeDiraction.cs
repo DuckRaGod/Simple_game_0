@@ -16,5 +16,6 @@ public class ChangeDiraction : MonoBehaviour,IHitable{
         time_alive = 0;
         bullet.Change_diraction(transform.rotation , transform.position);
         gameObject.SetActive(false);
+        JuiceManager.Instance.HitPowerup();
     }
 }

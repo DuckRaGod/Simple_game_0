@@ -13,8 +13,8 @@ public class Target : MonoBehaviour{
     }
 
     void Update(){
-        if(!GameManager.Instance.data.is_play) return;
-
+        if(!GameManager.Instance.data.is_play || GameManager.Instance.data.isPause) return;
+        
         if(switch_diraction_time > 0){
             time += Time.deltaTime;
             if(time >= switch_diraction_time){

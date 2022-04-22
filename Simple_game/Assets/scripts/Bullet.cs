@@ -16,9 +16,12 @@ public class Bullet : MonoBehaviour{
     //  Speed of bullet!
     float speed;
 
+    TrailRenderer tr;
+
     void Awake(){
         rigidbody2d = GetComponent<Rigidbody2D>();
         collider2d = GetComponent<Collider2D>();
+        tr = GetComponent<TrailRenderer>();
     }
 
     //  When Int
@@ -38,6 +41,7 @@ public class Bullet : MonoBehaviour{
 
     public void Set_active(bool set){
         if(!set) Set_bullet(0);
+        tr.Clear();
         alive_timer = 0;
         collider2d.enabled = set;
         visual.SetActive(set);

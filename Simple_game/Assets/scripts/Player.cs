@@ -74,11 +74,12 @@ public class Player : MonoBehaviour{
     }
 
     void Update(){
-        if(!GameManager.Instance.data.is_play) return;
-        
+        if(!GameManager.Instance.data.is_play || GameManager.Instance.data.isPause) return;
+
         Rotate();
-        if(Input.GetMouseButtonDown(0) || Input.GetKeyDown("space") || Input.touches[0].fingerId  == 0){
+        if(Input.GetMouseButtonDown(0) || Input.GetKeyDown("space")){
             Shoot();
+            JuiceManager.Instance.PlayerShoot();
         }
     }
 }
